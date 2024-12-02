@@ -8,7 +8,11 @@ set fs = CreateObject("Scripting.FileSystemObject")
 chromeCmd = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 ' Chrome 参数
 ' 开启本地文件访问，需要重启所有 chrome 进程
-chromeArgs = " --allow-file-access-from-files --app=""file:///"
+chromeArgs =_
+  " --allow-file-access-from-files"+_
+  " --window-position=""1500,20"""+_
+  " --window-size=""400,700"""+_
+  " --app=""file:///"
 
 ' 原始目录
 sourcePath = fs.GetFolder(".").Path
