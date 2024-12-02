@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="shortcut icon" href="assets/fav.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="lib/pico.css" />
+    <link rel="stylesheet" href="src/index.css" />
+    <script src="lib/lucide.js"></script>
+    <script src="lib/jquery-3.7.1.js"></script>
+    <script src="env.js"></script>
+    <title>我的程序</title>
+  </head>
+  <body>
+    <nav class="container-fluid">
+      <ul>
+        <li>
+          <a><i data-lucide="house"></i></a>
+        </li>
+        <li>
+          <a id="page-reload-btn" data-tooltip="刷新界面" data-placement="right">
+            <i data-lucide="rotate-cw"></i>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li><a id="app-settings" data-tooltip="设置" data-placement="left"><i data-lucide="settings"></i></a></li>
+        <li>
+          <a id="app-theme" data-tooltip="黑色主题" data-placement="left"
+            ><i data-lucide="moon"></i
+          ></a>
+        </li>
+        <li>
+          <a id="app-full-screen" data-tooltip="全屏" data-placement="left"
+            ><i data-lucide="expand"></i
+          ></a>
+        </li>
+      </ul>
+    </nav>
+    <hr />
+    <main class="container-fluid">
+      <button id="btn">show file content</button>
+      <div id="ctt"></div>
+    </main>
+    <dialog id="page-reload-dialog">
+      <article>
+        <h2>刷新界面</h2>
+        <p>界面刷新后，将丢失正在进行的工作，请确保保存数据之后在确认！</p>
+        <progress value="0" max="10" hidden id="page-reload-progress"></progress>
+        <footer>
+          <button class="waring" id="page-reload-no">取消</button>
+          <button class="secondary" id="page-reload-yes">确认</button>
+        </footer>
+      </article>
+    </dialog>
+    <script src="src/index.js"></script>
+    <script>
+      $('#btn').click(async (evt) => {
+        const [fileHandle] = await showOpenFilePicker();
+        const file = await fileHandle.getFile();
+        $('#ctt').text(await file.text());
+      });
+    </script>
+  </body>
+</html>

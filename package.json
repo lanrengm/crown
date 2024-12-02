@@ -1,0 +1,10 @@
+{
+  "name": "crown",
+  "version": "1.0.0",
+  "main": "index.html",
+  "private": true,
+  "scripts": {
+    "dev": "dev.vbs && start.lnk",
+    "build": "makensis build.nsi"
+  }
+}
